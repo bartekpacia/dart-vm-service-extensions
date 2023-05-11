@@ -7,12 +7,19 @@ import 'package:vm_service/vm_service.dart' as vm_service;
 var printCount = 0; // will be updated by main thread
 
 void main(List<String> arguments) {
-  const String extensionName = 'ext.printer.status';
-  
-  developer.registerExtension(extensionName, _printerStatusHandler);
+  () async {
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+      printCount++;
+      print('Print count: $printCount');
+    }
+  }();
+  const extensionName = 'ext.printer.getStatus';
+  developer.registerExtension(extensionName, _getStatusHandler);
+  print('registered extension $extensionName');
 }
 
-Future<developer.ServiceExtensionResponse> _printerStatusHandler(
+Future<developer.ServiceExtensionResponse> _getStatusHandler(
   String method,
   Map<String, String> parameters,
 ) async {
