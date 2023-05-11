@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
+import 'dart:isolate';
 
 // ignore: unused_import
 import 'package:vm_service/vm_service.dart' as vm_service;
@@ -14,9 +15,16 @@ void main(List<String> arguments) {
       print('Print count: $printCount');
     }
   }();
-  const extensionName = 'ext.printer.getStatus';
+  const String extensionName = 'ext.printer.getStatus';
   developer.registerExtension(extensionName, _getStatusHandler);
-  print('registered extension $extensionName');
+
+  // To call the service extension running in a foreign Dart VM, we need:
+  //  * The WebSocket URL of the VM service
+  //  * isolate ID of the isolate that is running the service extension
+  //  * name of the service extension
+
+  final String isolateId = developer.Service.getIsolateID(Isolate.current)!;
+  print('Registered service extension $extensionName in $isolateId');
 }
 
 Future<developer.ServiceExtensionResponse> _getStatusHandler(
