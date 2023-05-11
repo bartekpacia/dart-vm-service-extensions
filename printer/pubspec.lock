@@ -346,7 +346,7 @@ packages:
     source: hosted
     version: "1.3.2"
   vm_service:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: vm_service
       sha256: "1311639ad908dfdcb64734ac1fbd60416234c06e4351846783a79c56848a5185"
