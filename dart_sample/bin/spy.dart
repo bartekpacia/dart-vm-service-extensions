@@ -1,14 +1,13 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:vm_service/vm_service.dart' as vm_service;
 
 Future<void> main(List<String> args) async {
-  print('args: $args');
   final String webSocketUrl = args[0];
   final String isolateId = args[1];
 
-  final WebSocket socket = await WebSocket.connect(webSocketUrl);
+  final io.WebSocket socket = await io.WebSocket.connect(webSocketUrl);
   final StreamController<dynamic> controller = StreamController<dynamic>();
   final Completer<void> streamClosedCompleter = Completer<void>();
   socket.listen(
