@@ -2,17 +2,14 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:isolate';
 
-// ignore: unused_import
-import 'package:vm_service/vm_service.dart' as vm_service;
+var count = 0;
 
-var printCount = 0; // will be updated by main thread
-
-void main(List<String> arguments) {
+void main() {
   () async {
     while (true) {
+      print('Count: $count');
+      count++;
       await Future.delayed(Duration(seconds: 1));
-      printCount++;
-      print('Print count: $printCount');
     }
   }();
   const String extensionName = 'ext.printer.getStatus';
@@ -33,7 +30,7 @@ Future<developer.ServiceExtensionResponse> _getStatusHandler(
 ) async {
   final Map<String, dynamic> result = {
     'status': 'printing',
-    'print_count': printCount,
+    'count': count,
   };
 
   return developer.ServiceExtensionResponse.result(jsonEncode(result));
