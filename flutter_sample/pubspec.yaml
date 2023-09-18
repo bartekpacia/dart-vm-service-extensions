@@ -12,6 +12,12 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  flutter_driver:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  vm_service: ^11.7.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
