@@ -25,7 +25,7 @@ Future<void> main(List<String> args) async {
   // VmService is a reference to the VM service that is (possibly) running in a
   // different VM
 
-  final serviceExtensionName = 'ext.printer.getStatus';
+  final serviceExtensionName = 'ext.printer.getCount';
   print('Calling service extension $serviceExtensionName...');
   final vm_service.Response response = await vmService.callServiceExtension(
     serviceExtensionName,

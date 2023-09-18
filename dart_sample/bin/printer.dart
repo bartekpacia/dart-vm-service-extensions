@@ -12,8 +12,8 @@ void main() {
       await Future.delayed(Duration(seconds: 1));
     }
   }();
-  const String extensionName = 'ext.printer.getStatus';
-  developer.registerExtension(extensionName, _getStatusHandler);
+  const String extensionName = 'ext.printer.getCount';
+  developer.registerExtension(extensionName, _getCountHandler);
 
   // To call the service extension running in a foreign Dart VM, we need:
   //  * The WebSocket URL of the VM service
@@ -24,7 +24,7 @@ void main() {
   print('Registered service extension $extensionName in $isolateId');
 }
 
-Future<developer.ServiceExtensionResponse> _getStatusHandler(
+Future<developer.ServiceExtensionResponse> _getCountHandler(
   String method,
   Map<String, String> parameters,
 ) async {
