@@ -5,7 +5,7 @@ A sample command-line application demonstrating Dart VM service extensions.
 Run `priner` first with Dart VM service enabled (it's disabled by default):
 
 ```console
-$ dart run bin/printer.dart --enable-vm-service
+$ dart run --enable-vm-service bin/printer.dart
 The Dart VM service is listening on http://127.0.0.1:8181/FmMJoBzneFU=/
 The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/FmMJoBzneFU=/devtools?uri=ws://127.0.0.1:8181/FmMJoBzneFU=/ws
 Count: 0
