@@ -4,8 +4,8 @@ import 'dart:io' as io;
 
 /// A basic version of the spy program, which calls a service extension.
 ///
-/// Depends only on the built-in libraries. In particular, it doesn't depend on
-/// the vm_service package.
+///  * Does not depend on the vm_service package.
+///  * Must be explicitly provided with the remote VM's main isolate ID.
 Future<void> main(List<String> args) async {
   final String webSocketUrl = args[0];
   final String isolateId = args[1];
@@ -17,16 +17,11 @@ Future<void> main(List<String> args) async {
       var encoder = JsonEncoder.withIndent("  ");
       final response = encoder.convert(jsonDecode(data));
 
-      print('Got response:\n$response');
+      print('Got response from ext.printer.getCount:\n$response');
     },
   );
 
-  socket.add(jsonEncode({
-    'jsonrpc': '2.0',
-    'id': 1,
-    'method': 'getVM',
-  }));
-
+  print("Calling service extension ext.printer.getCount...");
   socket.add(jsonEncode({
     'jsonrpc': '2.0',
     'id': 2,
@@ -34,7 +29,8 @@ Future<void> main(List<String> args) async {
     'params': {'isolateId': isolateId},
   }));
 
-  await Future.delayed(Duration(seconds: 10));
+  // Simply, hacky way to keep running until the response is received.
+  await Future.delayed(const Duration(seconds: 1));
 
   socket.close();
 }

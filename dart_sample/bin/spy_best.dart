@@ -3,10 +3,11 @@ import 'dart:io' as io;
 
 import 'package:vm_service/vm_service.dart' as vm_service;
 
-/// A modified version of the spy program, which automatically gets the ID of
-/// the main isolate.
+/// A much improved version of the spy program, which calls a service extension.
 ///
-/// Uses the vm_service package.
+///  * Depends on the vm_service package.
+///  * Automatically finds the ID of the remote VM's main isolate using getVM
+///    function.
 Future<void> main(List<String> args) async {
   final String webSocketUrl = args[0];
 

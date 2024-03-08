@@ -5,7 +5,8 @@ import 'package:vm_service/vm_service.dart' as vm_service;
 
 /// An improved version of the spy program, which calls a service extension.
 ///
-/// Uses vm_service.
+///  * Depends on the vm_service package.
+///  * Must be explicitly provided with the remote VM's main isolate ID.
 Future<void> main(List<String> args) async {
   final String webSocketUrl = args[0];
   final String isolateId = args[1];

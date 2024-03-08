@@ -20,7 +20,7 @@ void main() {
   //  * isolate ID of the isolate that is running the service extension
   //  * name of the service extension
 
-  final String isolateId = developer.Service.getIsolateID(Isolate.current)!;
+  final String isolateId = developer.Service.getIsolateId(Isolate.current)!;
   print('Registered service extension $extensionName in $isolateId');
 }
 
