@@ -16,7 +16,7 @@ dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  vm_service: ^13.1.0
+  vm_service: ^13.0.0
 
 dev_dependencies:
   flutter_test:
