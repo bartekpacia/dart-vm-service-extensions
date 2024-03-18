@@ -5,6 +5,7 @@ import 'dart:io' as io;
 
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:integration_test/common.dart';
+import 'package:integration_test/integration_test_driver.dart';
 import 'package:vm_service/vm_service.dart' as vm;
 
 Future<void> main() => customIntegrationDriver();
